@@ -1,2 +1,34 @@
 # Flight-Optimizer
 flight-optimizer
+
+Hello :)
+
+So in order to start this project.
+
+You will have to have python, and nodejs, for django and react accordingly.
+
+Then we will need to install some packages along the way,
+Let's go through python packages first.
+
+pip install haversine
+pip install requests
+pip install corsheaders
+pip install json
+pip install djangorestframework
+
+
+
+for npm we need to be able to start basic react projects, 
+in addition to that we need 
+
+npm -i bootstrap
+npm -i axios
+
+And some other that it may require
+
+Then start django project with  "python manage.py startserver"
+And react app with "npm start"
+
+Main working script is located under django/myproject
+And is startable directly with "python main.py <src> <dest_1 dest_2 ... dest_n>" 
+or with the script file... using flight-optimizer --from <src> --to <dest> [destinations]
