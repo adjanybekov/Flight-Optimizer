@@ -3,7 +3,6 @@
 
 flight-optimizer is a service that searches for the cheapest price/distance flight for next 2 days
 
-Hello :)
 
 **How to start this project?**
 
