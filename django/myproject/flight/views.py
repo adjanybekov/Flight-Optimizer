@@ -14,7 +14,7 @@ def get_flight(request,value1,value2):
 
 	src = value1
 	dest = value2	
-	cmd = "python main.py %s %s"%(src,destinations)
+	cmd = "./flight-optimizer.bat --from %s --to %s"%(src,destinations)
 	print(cmd)
 	proc  = subprocess.Popen(cmd, stdout=subprocess.PIPE).stdout.read().decode("utf-8")
 	L = proc.split("\n")
