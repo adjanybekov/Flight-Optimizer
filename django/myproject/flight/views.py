@@ -19,6 +19,6 @@ def get_flight(request,value1,value2):
 	proc  = subprocess.Popen(cmd, stdout=subprocess.PIPE).stdout.read().decode("utf-8")
 	L = proc.split("\n")
 	print(proc.split("\n"))
-	L=L[1:len(L)-1] if len(L)>1 else L
+	L=L[0:len(L)-1] if len(L)>1 else L
 	return JsonResponse(L,safe=False)
 	

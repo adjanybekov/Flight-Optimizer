@@ -12,7 +12,7 @@ def getCityData(cityName):
     locUrl = "https://api.skypicker.com/locations?term=%s&locale=en-US&location_types=airport&limit=1&active_only=true&sort=name"
     cityUrl = locUrl%cityName
     cityResp = requests.get(cityUrl,verify=True)
-    return  json.loads(cityResp.content) if cityResp.ok else NULL
+    return  json.loads(cityResp.content) if cityResp.ok else None
 
 def getDistance(srcData,destData):    
     srcLoc = (srcData["locations"][0]["location"]["lat"],srcData["locations"][0]["location"]["lon"])
@@ -29,7 +29,7 @@ def getCheapestFlight(srcData,destData):
     today = datetime.date.today()    
     # dd/mm/YY
     d1 = today.strftime("%d/%m/%Y")    
-    
+
     tomorrow = datetime.date.today() + datetime.timedelta(days=1)
     d2= tomorrow.strftime("%d/%m/%Y")    
 
@@ -37,7 +37,7 @@ def getCheapestFlight(srcData,destData):
     searchResp = requests.get(searchUrl,verify=True)
     searchData = json.loads(searchResp.content)
     # print(searchData["data"][0]["price"],"USD")
-    return searchData["data"][0]["price"] if len(searchData["data"])>0 else NULL
+    return searchData["data"][0]["price"] if len(searchData["data"])>0 else None
 
 
 src = "Bishkek"
@@ -55,14 +55,19 @@ else:
 
 resultDic = {}
 distDic = {}
+flag = False
 for dest in destList:
     srcData = getCityData(src)
-    destData = getCityData(dest)    
-    if(len(srcData["locations"])<1 or len(destData["locations"])<1):
-        print()
-        sys.exit()
+    destData = getCityData(dest)   
+    #if city data is not found or server error occured
+    if( (srcData is None or destData is None ) or len(srcData["locations"])<1 or len(destData["locations"])<1):        
+        continue    
     distance = getDistance(srcData,destData)
     price = getCheapestFlight(srcData,destData)
+    if(price is None):        
+        continue
+    else:
+        flag = True
 
     # print("distance from %s to %s is %d km"%(src,dest,distance))
     # print("price from %s to %s is %d USD"%(src,dest,price))
@@ -72,13 +77,15 @@ for dest in destList:
 
 cheapestFlight = sys.maxsize
 cheapestDest = ""
+# print(resultDic)
 for key in resultDic:
     if resultDic[key]<cheapestFlight:
         cheapestFlight = resultDic[key]
         cheapestDest = key
 
-print()
-
-print("The cheapest destination is %s with price/distance =  %.3f USD/km"%(cheapestDest,cheapestFlight))
-print("Distance travelled from %s to %s is %d km"%(src,cheapestDest,distDic[cheapestDest]))#km
-print("Price from %s to %s is %d USD"%(src,cheapestDest,cheapestFlight*distDic[cheapestDest]))#usd
+if(not flag):
+    print("No flights found in this directions")
+else:
+    print("The cheapest destination is %s with price/distance =  %.3f USD/km"%(cheapestDest,cheapestFlight))
+    print("Distance travelled from %s to %s is %d km"%(src,cheapestDest,distDic[cheapestDest]))#km
+    print("Price from %s to %s is %d USD"%(src,cheapestDest,cheapestFlight*distDic[cheapestDest]))#usd
