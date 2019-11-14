@@ -1,18 +1,21 @@
 # Flight-Optimizer
+What is it?
+
 flight-optimizer is a service that searches for the cheapest price/distance flight for next 2 days
 
 Hello :)
 
-So in order to start this project.
+How to start this project?
 
-You will have to have python, and nodejs with latest versions, for django and react accordingly.
+In order to start this project you will have to have python, and nodejs with latest versions, for django and react accordingly.
 
 Then we will need to install some packages along the way,
 Let's go through python packages first.
 
+pip install django
 pip install haversine
 pip install requests
-pip install corsheaders
+pip install django-cors-headers
 pip install json
 pip install djangorestframework
 
