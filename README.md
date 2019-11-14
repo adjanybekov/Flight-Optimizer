@@ -1,7 +1,7 @@
 # Flight-Optimizer
 **What is it?**
 
-flight-optimizer is a service that searches for the cheapest price/distance flight for next 2 days
+flight-optimizer is a service that searches for the cheapest price/distance flight among given destinations for the next 2 days 
 
 
 **How to start this project?**
@@ -32,5 +32,5 @@ Then start django project with  "python manage.py startserver"
 And react app with "npm start"
 
 Main working script is located under django/myproject
-And is startable directly with "python main.py <src> <dest_1 dest_2 ... dest_n>" 
-or with the script file...(for OS Windows) using ** flight-optimizer --from <src> --to <dest> [destinations] **
+And is startable directly with **python main.py src <dest_1 dest_2 ... dest_n>**
+or with the script file...(for OS Windows) using **flight-optimizer --from src --to [destinations]**
