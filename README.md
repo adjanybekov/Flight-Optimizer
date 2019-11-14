@@ -33,4 +33,4 @@ And react app with "npm start"
 
 Main working script is located under django/myproject
 And is startable directly with **python main.py src <dest_1 dest_2 ... dest_n>**
-or with the script file...(for OS Windows) using **flight-optimizer --from src --to [destinations]**
+or with the script file...(for OS Windows)(Coming soon for linux) using **flight-optimizer --from src --to [destinations]**
