@@ -26,28 +26,15 @@ export class MyForm extends Component {
         // console.log(event.target.value);
     }
 
-    //   onMount=(res)=>{
-    //     console.log(res);
-    //     // this.setState({todos: res.data});
-    //     this.props.onFormSubmit(res.data);
-    //   }
     handleSubmit = () =>{
-        this.props.onFormSubmit(this.state.destination, this.state.source);
-        // this.setState({destination : this.state.destination.replace(/[ ,]+/g, ",")});
-        // console.log(this.state.destination);
-        // var url= "http://localhost:8000/api/flight/"+this.state.source+"/"+this.state.destination.replace(/[ ,]+/g, ",");//"http://localhost:8000/getFlight/"+this.state.source+"/"+this.state.destination;
-        // axios.get(url)
-        // .then(res=>this.onMount(res));
-
+        
+        this.props.onFormSubmit(this.state.destination, this.state.source);    
     }
 
     render() {
         return (
-            <div style={this.getStyle()}>
-                {/* <input className='btn btn-primary' value = {this.state.source} onChange={this.handleChangeSource}/> */}
-
+            <div style={this.getStyle()}>                
                 <div className='row'>
-
                     
                         <div className="input-group mb-3 col-md-3">
                         <div className="input-group-prepend">
@@ -65,8 +52,7 @@ export class MyForm extends Component {
                             <button className='btn btn-primary' onClick={this.handleSubmit}>Search flight</button>
                         </div>
                         
-                    </div>                
-                
+                    </div>                                
             </div>
         )
     }

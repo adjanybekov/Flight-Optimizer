@@ -10,7 +10,7 @@ class App extends Component{
     this.state = {
       flights:[        
       ],
-      loading: false
+      loading: false      
     };
   }
 
@@ -18,15 +18,18 @@ class App extends Component{
   
 
   onFormSubmit = (destination, source)=>{
-    var url= "http://localhost:8000/api/flight/"+source+"/"+destination.replace(/[ ,]+/g, ",");//"http://localhost:8000/getFlight/"+this.state.source+"/"+this.state.destination;
-    this.setState({loading:true,flights:[]},()=>{
-      axios.get(url)
-      .then(res=>{
-        console.log(res.data);
-        this.setState({flights :res.data, loading: false});
-      });
-    })        
-    // this.flights=[];
+    if(destination.length===0 ||  source.length === 0){
+      console.log("Please fill source and destination");
+    }else{
+      var url= "http://localhost:8000/api/flight/"+source+"/"+destination.replace(/[ ,]+/g, ",");//"http://localhost:8000/getFlight/"+this.state.source+"/"+this.state.destination;
+      this.setState({loading:true,flights:[]},()=>{
+        axios.get(url)
+        .then(res=>{
+          console.log(res.data);
+          this.setState({flights :res.data, loading: false});
+        });
+      })        
+    }        
   }
   getStyle(){
     return{      
@@ -35,8 +38,8 @@ class App extends Component{
   }
 
   render(){
-    const result = (this.state.loading) ? (<p>loading...</p>):(<Flights flights={this.state.flights}/>);
-    console.log(this.state.loading);
+
+    const result = (this.state.loading) ? (<p>loading...</p>):(<Flights flights={this.state.flights}/>);        
     
     return (
       <div className="App" style={this.getStyle()}>
