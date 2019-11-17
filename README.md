@@ -1,8 +1,8 @@
 # Flight-Optimizer
 **What is it?**
 
-flight-optimizer is a service that searches for the cheapest price/distance flight among given destinations for the next 2 days 
-
+flight-optimizer is a service that searches for the cheapest price/distance flight among given destinations for the next 2 days \
+Please look at the [demo](http://18.220.103.103:3000/)
 
 **How to start this project?**
 
