@@ -11,7 +11,7 @@ In order to start this project you will have to have python, and nodejs with lat
 Then we will need to install some packages along the way,\
 Let's go through python packages first.
 
-pip install django\
+pip install Django==2.1.*\
 pip install haversine\
 pip install requests\
 pip install django-cors-headers\
