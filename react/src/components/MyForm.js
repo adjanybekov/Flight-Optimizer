@@ -11,7 +11,7 @@ export class MyForm extends Component {
     getStyle = ()=>{
         return{
             textDecoration:'none',
-            background:"green",
+            background:"#357376",
             padding:'10px'
         }
     }
@@ -42,7 +42,7 @@ export class MyForm extends Component {
                         </div>
                         <input type="text" className="form-control" placeholder="Please type in source" aria-label="Username" aria-describedby="basic-addon1" value = {this.state.source} onChange={this.handleChangeSource}/>
                         </div>
-                        <div className="input-group mb-3 col-md-6">
+                        <div className="input-group mb-3 col-md-7">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="basic-addon1">Destinations</span>
                         </div>

@@ -21,7 +21,7 @@ class App extends Component{
     if(destination.length===0 ||  source.length === 0){
       console.log("Please fill source and destination");
     }else{
-      var url= "http://localhost:8000/api/flight/"+source+"/"+destination.replace(/[ ,]+/g, ",");//"http://localhost:8000/getFlight/"+this.state.source+"/"+this.state.destination;
+      var url= "http://18.220.103.103:8000/api/flight/"+source+"/"+destination.replace(/[ ,]+/g, ",");//"http://localhost:8000/getFlight/"+this.state.source+"/"+this.state.destination;
       this.setState({loading:true,flights:[]},()=>{
         axios.get(url)
         .then(res=>{
@@ -33,7 +33,7 @@ class App extends Component{
   }
   getStyle(){
     return{      
-      color: "red",        
+      color: "black",        
     }    
   }
 
@@ -42,8 +42,7 @@ class App extends Component{
     const result = (this.state.loading) ? (<p>loading...</p>):(<Flights flights={this.state.flights}/>);        
     
     return (
-      <div className="App" style={this.getStyle()}>
-        {/* <Inputs/> */}
+      <div className="App" style={this.getStyle()}>  
       <MyForm onFormSubmit={this.onFormSubmit}/>
         {result}
       </div>
