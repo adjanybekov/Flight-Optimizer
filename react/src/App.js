@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Flights from './components/Flights';
 import MyForm from './components/MyForm';
+import Loading from './components/Loading';
 import axios from "axios";
 
 class App extends Component{
@@ -33,17 +34,17 @@ class App extends Component{
   }
   getStyle(){
     return{      
-      color: "black",        
+      color: "black"       
     }    
   }
 
   render(){
 
-    const result = (this.state.loading) ? (<p>loading...</p>):(<Flights flights={this.state.flights}/>);        
+    const result = (this.state.loading) ? (<Loading style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}} />):(<Flights flights={this.state.flights}/>);        
     
     return (
-      <div className="App" style={this.getStyle()}>  
-      <MyForm onFormSubmit={this.onFormSubmit}/>
+      <div className="App"   style={this.getStyle()}>  
+      <MyForm  onFormSubmit={this.onFormSubmit}/>
         {result}
       </div>
     );
