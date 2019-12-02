@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import loading from "./loading2.gif"
+import { directive } from '@babel/types';
 
 class Loading extends Component {
 
@@ -16,12 +17,9 @@ class Loading extends Component {
 
     render() {        
             return ( 
-                           
-                <img   style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"
-                  }} src={loading} alt="loading..."/>
+                   <div className="text-center">    
+                    <img  src={loading} alt="loading..."/>
+                  </div>
             );                
     }
 }

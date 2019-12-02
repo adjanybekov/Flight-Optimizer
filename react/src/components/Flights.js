@@ -10,8 +10,7 @@ class Flights extends Component{
       return  <Flight flight={this.props.flights}/> //  this.props.flights.map((flight)=>(<Flight flight={flight}/>));          
     }else{
       return <Flight flight = "Why not to choose another direction?!"/>
-    }
-    
+    }    
   }
 }
 
